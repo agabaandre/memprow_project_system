@@ -1,0 +1,8 @@
+  <tr>					 
+					  <td>c. 3.	Girls should not be sent to school because they are only good for marriage. </td>
+					  <td><input  name="goodformarriage" id="" value="4" type="radio"  <?php if ($value=='value'){ echo 'checked';}?>></td>
+					  <td><input  name="goodformarriage" id="" value="3" type="radio"  <?php if ($value=='value'){ echo 'checked';}?>></td>
+					  <td><input  name="goodformarriage" id="" value="2" type="radio"  <?php if ($value=='value'){ echo 'checked';}?>></td>
+					  <td><input  name="goodformarriage" id="" value="1" type="radio"  <?php if ($value=='value'){ echo 'checked';}?>></td>
+					  <td><input  name="goodformarriage" id="" value="0" type="radio"  <?php if ($value=='value'){ echo 'checked';}?>></td>
+					  </tr>

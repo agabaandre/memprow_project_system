@@ -1,0 +1,245 @@
+.home{
+background: url(icons/home.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.start{
+background: url(icons/start.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.me{
+background: url(icons/me.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.manage{
+background: url(icons/review.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.follow{
+background: url(icons/follow-up.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+
+.people{
+background: url(icons/people.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.facilities{
+background: url(icons/facilities.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.reports{
+background: url(icons/reports.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.inventory{
+background: url(icons/inventory.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.transport{
+background: url(icons/transport.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.utility{
+background: url(icons/utility.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.settings{
+background: url(icons/setup.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.add{
+background: url(icons/add.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.cancel{
+background: url(icons/cancel.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.cancel_white{
+background: url(icons/cancel_white.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.process{
+background: url(icons/process.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.edit{
+background: url(icons/edit.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.delete{
+background: url(icons/delete.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.export{
+background: url(icons/export.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.back{
+background: url(icons/back.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.foward{
+background: url(icons/foward.png) no-repeat;
+width: 16px;
+height: 16px;
+float:right;
+}
+.stop{
+background: url(icons/stop.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.search{
+background: url(icons/search.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.reload{
+background: url(icons/reload.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.print{
+background: url(icons/print.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.comments{
+background: url(icons/comments.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.upload{
+background: url(icons/upload.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.download{
+background: url(icons/download.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.email{
+background: url(icons/email.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.login1{
+background: url(icons/login.png) no-repeat;
+width:40px;
+height:40px;
+float:left;
+text-align:center;
+margin-left:45%;
+}
+.login2{
+background: url(icons/login2.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.logout{
+background: url(icons/logout.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.profile{
+background: url(icons/profile.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.taskbag{
+background: url(icons/taskbag.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.folder{
+background: url(icons/folder.png) no-repeat;
+width: 45px;
+height: 45px;
+float:left;
+}
+.up{
+background: url(icons/up.png) no-repeat;
+width: 18px;
+height: 18px;
+float:left;
+margin-left:50%;
+}
+.down{
+background: url(icons/down.png) no-repeat;
+width: 18px;
+height: 18px;
+float:left;
+margin-left:50%;
+}
+.pdf{
+background: url(icons/pdf.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.excel{
+background: url(icons/excel.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}
+.anim{
+background: url(icons/anim.png) no-repeat;
+width: 16px;
+height: 16px;
+float:left;
+}

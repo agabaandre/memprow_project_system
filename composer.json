@@ -1,0 +1,23 @@
+{
+  "name": "Attendance Tracking System",
+  "description": "AdminLTE - admin control panel and dashboard that's based on Bootstrap 3",
+  "homepage": "http://www.takent.com",
+  "homepage2": "http://www.clientspartners.com",
+  "keywords": [
+    "IntraHealth",
+    "Attendance Tracking",
+    "Clock In",
+    "Clock Out",
+    "Check In",
+    "Check Out",
+  ],
+  "authors": [
+    {
+      "name": "Agaba Andrew",
+      "email": "agabaandre@gmail.com"
+    }
+  ],
+  "license": "MIT",
+  "support": {
+  }
+}
