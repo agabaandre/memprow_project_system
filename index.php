@@ -1,23 +1,19 @@
 <?php
 session_start();
 if (!include_once("db_connector/mysqli_conn.php")) {
-	header("location:index.php");
+	echo "Database Connector Missing";
 }
-if (!defined('sis')) {
-	define('sis', true);
-}
-if (isset($_SESSION['username'])) {
-	if (!isset($_SESSION['id']) && ($_SESSION['usertype'] != 'admin' || $_SESSION['usertype'] != 'hr'))
-		header("location:index.php"); // Re-direct to index.php
+if (isset($_SESSION['user_data'])) {
+	header("location:dashboard.php"); // Re-direct to index.php
 }
 ?>
 <?php
 $tbl_name = "users"; // Table name
 
 // username and password sent from form 
-$myusername = $_REQUEST['username'];
-$password = $_REQUEST['password'];
-$mypassword = $password;
+@$myusername = $_REQUEST['username'];
+@$password = $_REQUEST['password'];
+@$mypassword = $password;
 
 // To protect MySQL injection (more detail about MySQL injection)
 $myusername = stripslashes($myusername);
@@ -35,17 +31,13 @@ $count = mysqli_num_rows($result);
 
 if ($count == 1) {
 	// Register $myusername, $mypassword and redirect to file "dashboard.php"
-	$row = mysqli_fetch_row($result);
+	$row = mysqli_fetch_array($result);
 
-	$_SESSION['id'] = $row[0];
-	$id = $_SESSION['id'];
-	$lname = $row[5];
-	$fname = $row[4];
-	$_SESSION['username'] = $row[1];
-	$_SESSION['usertype'] = $row[3];
-	$_SESSION['usertype'] = $row[3];
-	$usertype = $_SESSION['usertype'];
-	$action = $lname . " " . $fname . " logged In As " . $_SESSION['usertype'] . " user";
+	//print_r($row);
+
+	$_SESSION['user_data'] = $row;
+
+	$action = $_SESSION['user_data']['lname'] . " " . $_SESSION['user_data']['fname'] . " logged In As " . $_SESSION['user_data']['user_type'] . " user";
 
 	if ($row[3] == "admin") {
 		$sql = mysqli_query($dbcon, "INSERT INTO `user_system_log` (`id`, `uuid`, `time`, `actions`) VALUES (NULL, '$id', CURRENT_TIMESTAMP, '$action')");
@@ -135,15 +127,13 @@ if ($count == 1) {
 		</div>
 		<!-- end-contact-form -->
 		<div class="footer">
-			<p> <span class="powered">Powered By
-					<a href="http://www.jackisaict.com">
-						Jakisa ICT Solutions
-						<span class="ticket-color"></span>
-						<span class="simply_color"><small>™</small></span>
+			<p> <span class="powered">
+					<span class="ticket-color"></span>
+					<span class="simply_color"><small>™</small></span>
 					</a>
-				</span><span class="maintained_by">Maintained By
+				</span><span class="maintained_by">
 					<a href="http://www.takent.net">
-						<span class="bitla_color">Takenet Enterprises Limited<small>™</small></span>
+						<span class="bitla_color"><small>™</small></span>
 					</a>
 				</span></a></p>
 			<p><strong>Copyright &copy; Memprow <?php echo date("Y"); ?> <a href="http://takenet.net" target="blank"> </a></strong>

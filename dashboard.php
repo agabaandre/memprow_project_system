@@ -2,9 +2,9 @@
 session_start();
 ini_set("date.timezone", "Africa/Kampala");
 
-if (!isset($_SESSION['id']) && ($_SESSION['usertype'] != 'admin' || $_SESSION['usertype'] != 'hr' || $_SESSION['usertype'] != 'data')) { // if session variable "username" does not exist.
-	header("location:index.php?msg=Please%20login%20to%20access%20the%20dashboard%20error!%20!"); // Re-direct to index.php
-}
+// if (!isset($_SESSION['userdata']['uuid'])) { // if session variable "username" does not exist.
+// 	header("location:index.php?msg=Please%20login%20to%20access%20the%20dashboard%20error!%20!"); // Re-direct to index.php
+// }
 
 $action = "";
 $msg = "";
@@ -13,8 +13,7 @@ if (isset($_GET['action']))
 		$action = $_GET['action'];
 include_once("init.php");
 ?>
-<?php $u = $sis['username'];
-$line = $db->queryUniqueObject("SELECT * FROM users WHERE `username`='$u'"); ?>
+<?php $u = $_SESSION['user_data']['username']; ?>
 <!DOCTYPE html>
 <html>
 <?php
@@ -44,9 +43,9 @@ include_once("engine/header.php");
 							<a href="#" class="dropdown-toggle" data-toggle="dropdown" style="background:#000024;">
 								<img src="dist/img/login.png" class="user-image" alt="">
 								<span class="hidden-xs"><?php echo "Sign Out ";
-														echo $fu = $line->lname;
+														echo $_SESSION['user_data']['lname'];
 														echo " ";
-														echo $fu = $line->fname; ?></span>
+														echo $_SESSION['user_data']['fname']; ?></span>
 							</a>
 							<ul class="dropdown-menu">
 								<!-- User image -->
@@ -68,11 +67,13 @@ include_once("engine/header.php");
 										<span id="txt1"></span>
 
 										</br></br>
-										<?php echo $fu = $line->lname;
+										<?php echo $fu = $_SESSION['user_data']['lname'];
 										echo " ";
-										echo $fu = $line->fname;
-										$uploader = $line->lname . " " . $line->fname;
-										$uuid = $suid = $line->uuid;
+										echo $fu = $_SESSION['user_data']['fname'];
+										$uploader = $_SESSION['user_data']['lname'];
+										" " . $_SESSION['user_data']['fname'];
+										$uuid = $suid = $_SESSION['user_data']['uuid'];
+										$usertype = $_SESSION['user_data']['usertype'];
 
 										?>
 									</p>
@@ -142,7 +143,7 @@ include_once("engine/header.php");
 					} else {
 						echo '<li class="treeview">';
 					} ?>
-					<?php if ($_SESSION['usertype'] == 'admin' || $_SESSION['usertype'] == 'hr') {
+					<?php if ($usertype  == 'admin' || $usertype  == 'hr') {
 						echo '<a href="?action=start_activity">
                 <i class="glyphicon glyphicon-refresh" style="color:lightblue;"></i>
                <span>Field Activities</span><i class="fa fa-angle-left pull-right"></i>
@@ -191,7 +192,7 @@ include_once("engine/header.php");
 					} ?>
 					<?php
 					// access control
-					if ($_SESSION['usertype'] == 'super_admin') {
+					if ($usertype  == 'super_admin') {
 						echo '<a href="?action=import">
                 <i class="glyphicon glyphicon-upload" style="color:lightblue;"></i>
                <span>Upload Participants</span>
@@ -224,7 +225,7 @@ include_once("engine/header.php");
 						<span class="">System Settings</span><i class="fa fa-angle-left pull-right"></i>
 					</a>
 					<ul class="treeview-menu">
-						<?php if ($_SESSION['usertype'] == 'admin') {
+						<?php if ($usertype == 'admin') {
 							echo '
 			    <li><a href="?action=users"><i class="fa fa-circle-o"></i>Manage Users</a></li>
 		        <li><a href="?action=jobs"><i class="fa fa-circle-o"></i>Manage Designations</a></li>
@@ -303,6 +304,9 @@ include_once("engine/header.php");
 						}
 					}
 				</style>
+
+
+				<?php print_r($_SESSION['user_data']); ?>
 
 
 				<?php
