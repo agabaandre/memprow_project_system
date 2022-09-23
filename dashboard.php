@@ -1,5 +1,6 @@
 <?php
 session_start();
+error_reporting(0);
 ini_set("date.timezone", "Africa/Kampala");
 
 // if (!isset($_SESSION['userdata']['uuid'])) { // if session variable "username" does not exist.
@@ -306,7 +307,8 @@ include_once("engine/header.php");
 				</style>
 
 
-				<?php print_r($_SESSION['user_data']); ?>
+				<?php //print_r($_SESSION['user_data']); 
+				?>
 
 
 				<?php

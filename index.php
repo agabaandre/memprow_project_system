@@ -74,7 +74,6 @@ if ($count == 1) {
 	<div class="wrap" style="margin-top:-120px;">
 		<!-- strat-contact-form -->
 		<div class="contact-form">
-
 			<!-- start-form -->
 			<form class="contact_form" action="#" method="post" name="contact_form">
 				<h1><b>MEMPROW System Login</b></h1>
@@ -82,8 +81,6 @@ if ($count == 1) {
 					<?php
 					if (isset($_GET['msg'])) {
 						$print_msg = $_GET['msg'];
-
-
 						echo '<div class="alert alert-danger alert-dismissable">
                   <a href="" class="close" data-dismiss="alert" aria-label="close">&times;</a>
                   <strong>' . $print_msg . '</strong>
