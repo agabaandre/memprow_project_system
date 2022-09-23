@@ -133,14 +133,14 @@ include("db_connector/mysqli_conn.php");
 			<?php
 			// start count paging
 			include("modules/universal_funcs/paging_class.php");
-			if (isset($_GET["page"]))
+			if (isset($_GET["page"])) {
 				$page = (int)$_GET["page"];
-			else
+			} else {
 				$page = 1;
 
-			$setLimit = 25;
-			$pageLimit = ($page * $setLimit) - $setLimit;
-
+				$setLimit = 25;
+				$pageLimit = ($page * $setLimit) - $setLimit;
+			}
 
 			if (($_POST['mylimits']) != 'on') {
 				//	$sql="SELECT participant_id,firstname,surname,othername,gender,age_group,residence_district,postal_address,contact1,contact2,email,institution,position,
@@ -384,13 +384,19 @@ include("db_connector/mysqli_conn.php");
 				</tr>
 		</tbody>
 		<tfoot>
-			<div class="col-md-6" style="overflow:auto;">
-				<?php
-				// Call the Pagination
 
-				echo displayPaginationBelow($setLimit, $page);
-				?>
-			</div>
+			<?php
+			// Call the Pagination
+			$url = "dashboard.php?action=view_participants";
+			$counts = mysqli_query($dbcon, "SELECT count (id) as parts from field_participants");
+			$counter = mysqli_fetch_array($counts);
+			$count = $counter['parts'];
+
+
+
+			echo displayPaginationBelow($setLimit, $page, $count, $url);
+			?>
+
 		</tfoot>
 	</table>
 </div>

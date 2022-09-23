@@ -1,12 +1,10 @@
 <?php
 
-function displayPaginationBelow($per_page, $page)
+function displayPaginationBelow($per_page, $page, $count, $url)
 {
-	include("db_connector/mysqli_conn.php");
-	$page_url = "dashboard.php?action=manage_field_activities&";
-	$query = mysqli_query($dbcon, "SELECT COUNT(field_activity_id) as totalCount from field_work");
-	$rec = mysqli_fetch_array($query);
-	$total = $rec['totalCount'];
+
+	$page_url = $url;
+	$total = $count;
 	$adjacents = "2";
 
 	$page = ($page == 0 ? 1 : $page);

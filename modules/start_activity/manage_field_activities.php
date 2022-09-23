@@ -182,7 +182,7 @@
 
 					$training_name = ($_POST['training_name']);
 					$action = $uploader . " Deleted " . $training_name . " from field activities";
-					$sql = mysql_query("INSERT INTO `user_system_log` (`id`, `uuid`, `time`, `actions`) VALUES (NULL, '$uuid', CURRENT_TIMESTAMP, '$action')");
+					$sql = mysqli_query($dbcon, "INSERT INTO `user_system_log` (`id`, `uuid`, `time`, `actions`) VALUES (NULL, '$uuid', CURRENT_TIMESTAMP, '$action')");
 
 
 					echo $msg = '<div class="alert alert-success alert-dismissable">
@@ -313,7 +313,16 @@
 					$pageLimit = ($page * $setLimit) - $setLimit;
 
 
-				 ?>
+
+					$url = "dashboard.php?action=manage_field_activities&";
+					$query = mysqli_query($dbcon, "SELECT COUNT(field_activity_id) as totalCount from field_work");
+					$rec = mysqli_fetch_array($query);
+					$count = $rec['totalCount'];
+
+
+
+
+					?>
 
  				<?php
 
@@ -728,7 +737,7 @@
  	<?php
 		// Call the Pagination
 
-		echo displayPaginationBelow($setLimit, $page);
+		echo displayPaginationBelow($setLimit, $page, $count, $url);
 		?>
  </div>
  <div class="col-md-6">
