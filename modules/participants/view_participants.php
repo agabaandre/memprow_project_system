@@ -137,10 +137,11 @@ include("db_connector/mysqli_conn.php");
 				$page = (int)$_GET["page"];
 			} else {
 				$page = 1;
-
-				$setLimit = 25;
-				$pageLimit = ($page * $setLimit) - $setLimit;
 			}
+
+			$setLimit = 100;
+			$pageLimit = ($page * $setLimit) - $setLimit;
+
 
 			if (($_POST['mylimits']) != 'on') {
 				//	$sql="SELECT participant_id,firstname,surname,othername,gender,age_group,residence_district,postal_address,contact1,contact2,email,institution,position,
