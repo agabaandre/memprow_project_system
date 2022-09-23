@@ -209,7 +209,7 @@ include("db_connector/mysqli_conn.php");
 						<form action="" method="post" style="width:40px;">
 							<input type="hidden" name="id" value="<?php echo $row['participant_id']; ?>" />
 							<input type="hidden" name="delete">
-							<?php if ($_SESSION['usertype'] == 'admin') {
+							<?php if ($usertype == 'admin') {
 								echo '<input type="hidden" name="training_name" value="<?php echo $training;?>" style="width:100%;">
 				  <button  type="button" data-toggle="modal" data-target="#delete' . $row['participant_id'] . '" <?php echo" name="delete" title="On click, this record will be deleted!" class="btn btn-sm btn-link" style="float:left;"><i class="glyphicon glyphicon-remove"></i>Delete</button>';
 							} ?>
@@ -385,24 +385,24 @@ include("db_connector/mysqli_conn.php");
 		</tbody>
 		<tfoot>
 
-			<?php
-			// Call the Pagination
-			$url = "dashboard.php?action=view_participants";
-			$counts = mysqli_query($dbcon, "SELECT count (id) as parts from field_participants");
-			$counter = mysqli_fetch_array($counts);
-			$count = $counter['parts'];
 
-
-
-			echo displayPaginationBelow($setLimit, $page, $count, $url);
-			?>
 
 		</tfoot>
 	</table>
 </div>
 
-<div class="col-md-4">
+<div class="col-md-6">
+	<?php
+	// Call the Pagination
+	$url = "dashboard.php?action=view_participants";
+	$counts = mysqli_query($dbcon, "SELECT count(id) as parts from field_participants");
+	$counter = mysqli_fetch_array($counts);
+	$count = $counter['parts'];
 
+
+
+	echo displayPaginationBelow($setLimit, $page, $count, $url);
+	?>
 </div>
 <div class="col-md-4">
 </div>
