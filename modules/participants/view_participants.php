@@ -139,7 +139,7 @@ include("db_connector/mysqli_conn.php");
 				$page = 1;
 			}
 
-			$setLimit = 100;
+			$setLimit = 50;
 			$pageLimit = ($page * $setLimit) - $setLimit;
 
 
