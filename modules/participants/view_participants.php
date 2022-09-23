@@ -130,8 +130,17 @@ include("db_connector/mysqli_conn.php");
 			</tr>
 		</thead>
 		<tbody>
-
 			<?php
+			// start count paging
+			include("modules/universal_funcs/paging_class.php");
+			if (isset($_GET["page"]))
+				$page = (int)$_GET["page"];
+			else
+				$page = 1;
+
+			$setLimit = 25;
+			$pageLimit = ($page * $setLimit) - $setLimit;
+
 
 			if (($_POST['mylimits']) != 'on') {
 				//	$sql="SELECT participant_id,firstname,surname,othername,gender,age_group,residence_district,postal_address,contact1,contact2,email,institution,position,
@@ -139,15 +148,19 @@ include("db_connector/mysqli_conn.php");
 
 				$surname = mysqli_real_escape_string($dbcon, $_POST['surname']);
 
+
+
 				$field_activity_id = mysqli_real_escape_string($dbcon, $_POST['field_activity_id']);
 				$sql = "SELECT DISTINCT participants.participant_id,firstname,surname,othername,gender,age_group,residence_district,postal_address,contact1,contact2,email,training,institution,
-				position,flag FROM participants,field_participants where field_participants.participant_id=participants.participant_id AND training LIKE'%$field_activity_id' AND surname LIKE'$surname%' LIMIT 100";
+				position,flag FROM participants,field_participants where field_participants.participant_id=participants.participant_id AND training LIKE'%$field_activity_id' AND surname LIKE'$surname%' LIMIT $pageLimit , $setLimit";
 			} else {
 				//default function
 				$sql = "SELECT DISTINCT participants.participant_id,firstname,surname,othername,gender,age_group,residence_district,postal_address,contact1,contact2,email,training,institution,
-				position,flag FROM participants,field_participants where field_participants.participant_id=participants.participant_id ORDER BY participants.participant_id DESC, surname ASC Limit 100";
+				position,flag FROM participants,field_participants where field_participants.participant_id=participants.participant_id ORDER BY participants.participant_id DESC, surname ASC LIMIT $pageLimit , $setLimit";
 			}
 			$i = 1;
+
+
 			$result = mysqli_query($dbcon, $sql);
 			while ($row = mysqli_fetch_array($result)) {
 				$id = $row['participant_id'];
