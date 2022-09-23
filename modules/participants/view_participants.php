@@ -158,15 +158,16 @@ include("db_connector/mysqli_conn.php");
 				$sql = "SELECT DISTINCT participants.participant_id,firstname,surname,othername,gender,age_group,residence_district,postal_address,contact1,contact2,email,training,institution,
 				position,flag FROM participants,field_participants where field_participants.participant_id=participants.participant_id ORDER BY participants.participant_id DESC, surname ASC LIMIT $pageLimit , $setLimit";
 			}
-			$i = 1;
+
 
 
 			$result = mysqli_query($dbcon, $sql);
+			$no = 1;
 			while ($row = mysqli_fetch_array($result)) {
 				$id = $row['participant_id'];
 			?>
 				<tr>
-					<td><?php echo $i++ ?></td>
+					<td><?php echo $no++ ?></td>
 					<td><?php echo $myname = $row['surname'] . " " . $row['firstname'] . " " . $row['othername']; ?></td>
 					<td><?php echo  $row['gender']; ?></td>
 					<td> <?php echo $active_opp = $position = $row['position']; ?></td>
@@ -383,6 +384,13 @@ include("db_connector/mysqli_conn.php");
 				</tr>
 		</tbody>
 		<tfoot>
+			<div class="col-md-6" style="overflow:auto;">
+				<?php
+				// Call the Pagination
+
+				echo displayPaginationBelow($setLimit, $page);
+				?>
+			</div>
 		</tfoot>
 	</table>
 </div>
