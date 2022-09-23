@@ -394,7 +394,7 @@ include("db_connector/mysqli_conn.php");
 <div class="col-md-6">
 	<?php
 	// Call the Pagination
-	$url = "dashboard.php?action=view_participants";
+	$url = "dashboard.php?action=view_participants&";
 	$counts = mysqli_query($dbcon, "SELECT count(id) as parts from field_participants");
 	$counter = mysqli_fetch_array($counts);
 	$count = $counter['parts'];
